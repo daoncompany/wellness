@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>김포웰니스라이프센터 | 3F 카시아타이 · 2F 데이메르 · 1F ABC스팀세차 · LF 효소온</title>
+<meta name="description" content="경기 김포시 금포로 1231 김포웰니스라이프센터. 3F 카시아타이(타이마사지·호텔스파), 2F 데이메르(프리미엄 풀파티), 1F ABC스팀세차(프리미엄 스팀세차), LF 효소온(자연발효 효소찜질).">
+<meta property="og:type" content="website">
+<meta property="og:title" content="김포웰니스라이프센터">
+<meta property="og:description" content="한 건물, 네 개의 층에서 만나는 쉼과 케어의 모든 순간">
+<meta property="og:image" content="img/3f_1.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+:root{
+  --ink:#1C1A17; --iv:#F4F0E8; --gold:#8C6F3F; --mute:#6E6354; --line:#DCD3C4; --body:#5C544A;
+  --c3:#1F3157; --c2:#7B2430; --c1:#946A00; --cl:#5B4034;
+  --serif:'Noto Serif KR',serif; --sans:'Pretendard',-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--iv);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;word-break:keep-all}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.wrap{width:100%;max-width:1200px;margin:0 auto;padding:0 16px}
+.eyebrow{font-family:var(--serif);font-size:11px;letter-spacing:.24em;color:var(--gold)}
+
+/* 헤더 */
+header{position:sticky;top:0;z-index:10;background:rgba(244,240,232,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo b{display:block;font-family:var(--serif);font-weight:500;font-size:16px;letter-spacing:.16em}
+.logo small{display:block;font-size:11px;color:var(--mute);margin-top:2px}
+.menu-btn{width:44px;height:44px;border:0;background:none;display:flex;flex-direction:column;align-items:flex-end;justify-content:center;gap:6px;cursor:pointer}
+.menu-btn span{display:block;height:1.5px;width:26px;background:var(--ink)}
+.menu-btn span:last-child{width:18px}
+nav{display:none;position:absolute;left:0;right:0;top:64px;background:var(--iv);border-bottom:1px solid var(--line);padding:8px 16px 16px}
+nav.open{display:block}
+nav a{display:block;padding:12px 0;font-size:15px;font-weight:500;border-bottom:1px solid var(--line)}
+nav a:last-child{border-bottom:0}
+
+/* 히어로 */
+.hero{padding:40px 0 48px}
+.hero h1{font-family:var(--serif);font-weight:400;font-size:42px;line-height:1.15;margin:14px 0 16px;letter-spacing:-.01em}
+.hero p.lead{font-size:15px;line-height:1.6;font-weight:500;color:#3A342C}
+.stage{position:relative;margin-top:36px;aspect-ratio:343/191}
+.stage .rows{position:absolute;inset:0;display:grid;grid-template-rows:27.8% 24.1% 24.1% 24.1%}
+.stage .row{border-top:1px solid var(--line);display:flex;align-items:center;gap:20px}
+.stage .row.lf{border-top-color:var(--ink);border-bottom:1px solid var(--line)}
+.stage .num{font-family:var(--serif);font-size:18px;width:34px}
+.stage .brand{display:none}
+.stage .bldg{position:absolute;right:0;top:1.85%;height:92.6%;width:auto;max-width:none}
+.hero .hint{margin-top:28px;font-size:12px;color:var(--mute)}
+.hero .hint::after{content:"";display:block;width:24px;height:1px;background:var(--gold);margin-top:14px}
+
+/* 층별 안내(모바일 전용) */
+.guide{background:var(--ink);color:var(--iv);padding:44px 0 28px}
+.guide h2{font-size:22px;font-weight:700;margin:8px 0 24px}
+.guide .eyebrow{color:#C9AE7E}
+.guide a{display:flex;align-items:center;gap:16px;padding:14px 0;border-top:1px solid #3A352E}
+.guide a:last-child{border-bottom:1px solid #3A352E}
+.guide .num{font-family:var(--serif);font-size:38px;line-height:1.1;width:56px}
+.guide .txt{flex:1}
+.guide strong{display:block;font-size:17px}
+.guide small{display:block;font-size:12px;color:#A89D8E;margin-top:4px}
+.guide .arr{color:#C9AE7E}
+
+/* 층 구역 */
+.floor{padding:56px 0 40px;scroll-margin-top:64px}
+.floor .head{display:flex;align-items:flex-start;gap:14px}
+.floor .big{font-family:var(--serif);font-size:84px;line-height:.95;font-weight:400;color:var(--c)}
+.floor .eng{flex:1;font-family:var(--serif);font-size:12px;letter-spacing:.24em;color:var(--c);padding:16px 0 10px;border-bottom:1px solid var(--c);margin-top:6px}
+.floor h3{font-size:26px;font-weight:700;margin-top:22px}
+.floor .desc{font-size:14px;line-height:1.65;color:var(--body);margin-top:8px}
+.photos{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:28px}
+.photos img{width:100%;height:110px;object-fit:cover;border-radius:4px}
+.photos img:first-child{grid-column:1/-1;height:220px}
+.btns{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:20px}
+.btn{height:54px;border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:14px;font-weight:700;text-align:center;transition:opacity .2s}
+.btn:hover{opacity:.85}
+.btn small{font-size:11px;font-weight:400;opacity:.75;margin-bottom:2px}
+.btn.tel{background:var(--c);color:#fff}
+.btn.sub{border:1px solid var(--c);color:var(--c)}
+#f3{--c:var(--c3)} #f2{--c:var(--c2);background:#EFE6E2} #f1{--c:var(--c1);background:#F7EFD9} #lf{--c:var(--cl);background:#EDE5DD}
+#f1 .btn.tel{background:var(--ink)} #f1 .btn.tel small{color:#F2C14E;opacity:1}
+#f1 .btn.sub{background:#F2B705;border-color:#F2B705;color:var(--ink)}
+
+/* 오시는 길 */
+.loc{padding:56px 0}
+.loc h2{font-size:22px;font-weight:700;margin:8px 0 10px}
+.loc .addr{font-size:15px;font-weight:500;color:#3A342C}
+#map{width:100%;height:280px;border-radius:4px;margin-top:20px;background:#E6E0D6;overflow:hidden}
+.loc .btns a:first-child{background:#03C75A;color:#fff}
+.loc .btns a:last-child{background:#FEE500;color:var(--ink)}
+
+footer{background:var(--ink);color:#A89D8E;padding:36px 0 40px;font-size:12px;line-height:1.7}
+footer b{display:block;font-family:var(--serif);font-weight:500;font-size:15px;letter-spacing:.16em;color:var(--iv);margin-bottom:8px}
+footer .copy{color:#9A9184;margin-top:16px}
+
+/* PC */
+@media (min-width:1024px){
+  .wrap{padding:0 40px}
+  header .wrap{height:88px}
+  .logo b{font-size:20px}
+  .logo small{font-size:11px}
+  .menu-btn{display:none}
+  nav{display:flex!important;position:static;padding:0;border:0;background:none;gap:40px}
+  nav a{padding:0;border:0;font-size:14px;color:#3A342C}
+  nav a:hover{color:var(--gold)}
+  .hero{padding:72px 0 88px}
+  .hero .top{display:flex;justify-content:space-between;align-items:flex-end;gap:40px}
+  .hero h1{font-size:56px;margin:14px 0 0}
+  .hero p.lead{font-size:18px;text-align:right}
+  .stage{margin-top:72px;aspect-ratio:1200/436}
+  .stage .num{font-size:44px;width:80px}
+  .stage .brand{display:block}
+  .stage .brand strong{display:block;font-size:22px}
+  .stage .brand small{display:block;font-size:13px;color:var(--mute);margin-top:4px}
+  .stage .bldg{right:0}
+  .hero .hint,.guide{display:none}
+  .floor{padding:100px 0}
+  .floor .wrap{display:grid;grid-template-columns:400px 1fr;gap:80px;align-items:start}
+  .floor:nth-of-type(even) .wrap{grid-template-columns:1fr 400px}
+  .floor:nth-of-type(even) .info{order:2}
+  .floor .big{font-size:128px}
+  .floor .head{flex-direction:column;gap:12px}
+  .floor .eng{width:100%;font-size:13px;padding:0 0 12px;margin-top:0}
+  .floor h3{font-size:36px}
+  .floor .desc{font-size:16px;line-height:1.7}
+  .floor .btns{margin-top:48px;max-width:390px}
+  .btn{height:60px;font-size:15px}
+  .btn small{font-size:11px}
+  .btn.tel span{font-size:17px}
+  .photos{grid-template-columns:2fr 1fr;grid-template-rows:1fr 1fr;gap:14px;margin-top:0;height:440px}
+  .photos img,.photos img:first-child{height:100%}
+  .photos img:first-child{grid-column:1;grid-row:1/3}
+  .loc{padding:100px 0}
+  .loc .wrap{display:grid;grid-template-columns:1fr 1fr;gap:20px 80px}
+  .loc h2{font-size:32px}
+  .loc .addr{font-size:18px}
+  #map{grid-row:1/3;grid-column:2;height:360px;margin-top:0}
+  .loc .btns{align-self:end;max-width:400px}
+  footer .wrap{display:flex;justify-content:space-between;align-items:flex-end}
+  footer{padding:48px 0}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a href="#top" class="logo"><b>GIMPO WELLNESS</b><small>김포웰니스라이프센터</small></a>
+    <button class="menu-btn" aria-label="메뉴 열기" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav>
+      <a href="#f3">3F 카시아타이</a>
+      <a href="#f2">2F 데이메르</a>
+      <a href="#f1">1F ABC스팀세차</a>
+      <a href="#lf">LF 효소온</a>
+      <a href="#location">오시는 길</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div class="top">
+        <div>
+          <p class="eyebrow">GIMPO · GEUMPO-RO 1231</p>
+          <h1>One Building,<br>Four Rituals.</h1>
+        </div>
+        <p class="lead">한 건물, 네 개의 층에서 만나는<br>쉼과 케어의 모든 순간</p>
+      </div>
+      <div class="stage" aria-label="층별 구성">
+        <div class="rows">
+          <a class="row" href="#f3"><span class="num" style="color:var(--c3)">3F</span><span class="brand"><strong>카시아타이</strong><small>타이마사지 · 호텔스파</small></span></a>
+          <a class="row" href="#f2"><span class="num" style="color:var(--c2)">2F</span><span class="brand"><strong>데이메르</strong><small>프리미엄 풀파티</small></span></a>
+          <a class="row" href="#f1"><span class="num" style="color:var(--c1)">1F</span><span class="brand"><strong>ABC스팀세차</strong><small>프리미엄 스팀세차</small></span></a>
+          <a class="row lf" href="#lf"><span class="num" style="color:var(--cl)">LF</span><span class="brand"><strong>효소온</strong><small>자연발효 효소찜질</small></span></a>
+        </div>
+        <img class="bldg" src="img/building.svg" alt="김포웰니스라이프센터 건물 일러스트">
+      </div>
+      <p class="hint">아래로 내려 층별 브랜드를 만나보세요</p>
+    </div>
+  </section>
+
+  <section class="guide">
+    <div class="wrap">
+      <p class="eyebrow">FLOOR GUIDE</p>
+      <h2>층별 안내</h2>
+      <a href="#f3"><span class="num" style="color:#8FA3C9">3F</span><span class="txt"><strong>카시아타이</strong><small>타이마사지 · 호텔스파</small></span><span class="arr">→</span></a>
+      <a href="#f2"><span class="num" style="color:#D98A93">2F</span><span class="txt"><strong>데이메르</strong><small>프리미엄 풀파티</small></span><span class="arr">→</span></a>
+      <a href="#f1"><span class="num" style="color:#F2C14E">1F</span><span class="txt"><strong>ABC스팀세차</strong><small>프리미엄 스팀세차</small></span><span class="arr">→</span></a>
+      <a href="#lf"><span class="num" style="color:#C9A28C">LF</span><span class="txt"><strong>효소온</strong><small>자연발효 효소찜질</small></span><span class="arr">→</span></a>
+    </div>
+  </section>
+
+  <section class="floor" id="f3">
+    <div class="wrap">
+      <div class="info">
+        <div class="head"><span class="big">3F</span><span class="eng">HEALING SPA</span></div>
+        <h3>카시아타이</h3>
+        <p class="desc">타이마사지와 호텔식 스파를 한 공간에서.<br>도심 속 프라이빗한 휴식을 경험하세요.</p>
+        <div class="btns">
+          <a class="btn tel" href="tel:050713118590"><small>전화 예약 문의</small><span>0507-1311-8590</span></a>
+          <a class="btn sub" href="#" target="_blank" rel="noopener">네이버톡톡 문의</a>
+        </div>
+      </div>
+      <div class="photos">
+        <img src="img/3f_1.jpg" alt="카시아타이 마사지" loading="lazy">
+        <img src="img/3f_2.jpg" alt="카시아타이 스파 욕조" loading="lazy">
+        <img src="img/3f_3.jpg" alt="카시아타이 마사지룸" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <section class="floor" id="f2">
+    <div class="wrap">
+      <div class="info">
+        <div class="head"><span class="big">2F</span><span class="eng">PRIVATE POOL PARTY</span></div>
+        <h3>데이메르</h3>
+        <p class="desc">우리만을 위한 실내 수영장과 라운지.<br>특별한 날을 위한 프리미엄 풀파티 공간.</p>
+        <div class="btns">
+          <a class="btn tel" href="tel:050714602214"><small>전화 예약 문의</small><span>0507-1460-2214</span></a>
+          <a class="btn sub" href="#" target="_blank" rel="noopener">네이버예약 바로가기</a>
+        </div>
+      </div>
+      <div class="photos">
+        <img src="img/2f_1.jpg" alt="데이메르 실내 수영장" loading="lazy">
+        <img src="img/2f_2.jpg" alt="데이메르 해먹 라운지" loading="lazy">
+        <img src="img/2f_3.jpg" alt="데이메르 다이닝 공간" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <section class="floor" id="f1">
+    <div class="wrap">
+      <div class="info">
+        <div class="head"><span class="big">1F</span><span class="eng">PREMIUM CAR CARE</span></div>
+        <h3>ABC스팀세차</h3>
+        <p class="desc">고온 스팀으로 구석구석 섬세하게.<br>차를 아끼는 분들을 위한 프리미엄 세차.</p>
+        <div class="btns">
+          <a class="btn tel" href="tel:050713674518"><small>전화 예약 문의</small><span>0507-1367-4518</span></a>
+          <a class="btn sub" href="#" target="_blank" rel="noopener">네이버예약 바로가기</a>
+        </div>
+      </div>
+      <div class="photos">
+        <img src="img/1f_1.jpg" alt="ABC스팀세차 작업장" loading="lazy">
+        <img src="img/1f_2.jpg" alt="ABC스팀세차 로고" loading="lazy">
+        <img src="img/1f_3.jpg" alt="ABC스팀세차 휠 세척" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <section class="floor" id="lf">
+    <div class="wrap">
+      <div class="info">
+        <div class="head"><span class="big">LF</span><span class="eng">WELLNESS &amp; DETOX</span></div>
+        <h3>효소온</h3>
+        <p class="desc">자연 발효된 효소 속에서 땀 흘리는 시간.<br>몸이 먼저 알아보는 따뜻한 효소찜질.</p>
+        <div class="btns">
+          <a class="btn tel" href="tel:050713344516"><small>전화 예약 문의</small><span>0507-1334-4516</span></a>
+          <a class="btn sub" href="#" target="_blank" rel="noopener">네이버예약 바로가기</a>
+        </div>
+      </div>
+      <div class="photos">
+        <img src="img/lf_1.jpg" alt="효소온 라운지" loading="lazy">
+        <img src="img/lf_2.jpg" alt="효소찜질 체험" loading="lazy">
+        <img src="img/lf_3.jpg" alt="효소온 찜질실" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <section class="loc" id="location">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">LOCATION</p>
+        <h2>오시는 길</h2>
+        <p class="addr">경기 김포시 금포로 1231</p>
+      </div>
+      <div id="map" role="region" aria-label="네이버 지도"></div>
+      <div class="btns">
+        <a class="btn" href="https://naver.me/GUTqTSFz" target="_blank" rel="noopener">네이버 플레이스로 보기</a>
+        <a class="btn" href="https://kko.to/VqQsEU4Min" target="_blank" rel="noopener">카카오맵으로 보기</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div><b>GIMPO WELLNESS</b>경기 김포시 금포로 1231</div>
+    <p class="copy">© 2026 ㈜다온닷컴. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  var btn = document.querySelector('.menu-btn'), nav = document.querySelector('nav');
+  btn.addEventListener('click', function () {
+    var open = nav.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open);
+  });
+  nav.addEventListener('click', function (e) { if (e.target.tagName === 'A') { nav.classList.remove('open'); btn.setAttribute('aria-expanded', false); } });
+
+  // 네이버 지도: NCP 콘솔에서 발급한 Client ID(브라우저 공개용)를 넣고, 콘솔에서 서비스 도메인을 등록해 두세요.
+  var NAVER_MAP_CLIENT_ID = 'YOUR_NCP_CLIENT_ID';
+  function initMap() {
+    if (!window.naver || !naver.maps) return;
+    var pos = new naver.maps.LatLng(37.65687, 126.69804); // 경기 김포시 금포로 1231
+    var map = new naver.maps.Map('map', { center: pos, zoom: 17, scrollWheel: false });
+    new naver.maps.Marker({ position: pos, map: map });
+  }
+  if (NAVER_MAP_CLIENT_ID.indexOf('YOUR_') !== 0) {
+    var s = document.createElement('script');
+    s.src = 'https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=' + NAVER_MAP_CLIENT_ID + '&callback=initMap';
+    document.body.appendChild(s);
+  }
+</script>
+</body>
+</html>
