@@ -71,21 +71,23 @@ nav a{display:block;padding:12px 0;font-size:15px;font-weight:500;border-bottom:
 nav a:last-child{border-bottom:0}
 
 /* 히어로 */
-.hero{padding:40px 0 48px}
+.hero{padding:40px 0 48px;overflow-x:clip}
 .hero h1{font-family:var(--serif);font-weight:400;font-size:42px;line-height:1.15;margin:14px 0 16px;letter-spacing:-.01em}
 .hero p.lead{font-size:15px;line-height:1.6;font-weight:500;color:#3A342C}
 .stage{position:relative;margin-top:36px;aspect-ratio:343/191}
-.stage .rows{position:absolute;inset:0;display:grid;grid-template-rows:27.8% 24.1% 24.1% 24.1%}
-.stage .row{position:relative;border-top:1px solid var(--line);display:flex;align-items:center;gap:20px;padding-left:4px;transition:background .3s}
+.stage .rows{position:absolute;inset:0;display:grid;grid-template-rows:27.8% 24.1% 24.1% 24.1%;isolation:isolate}
+.stage .row{position:relative;border-top:1px solid var(--line);display:flex;align-items:center;gap:20px;padding-left:4px}
+.stage .row::before{content:"";position:absolute;top:0;bottom:0;left:calc(50% - 50vw);width:100vw;z-index:-1;opacity:0;transition:opacity .3s}
+.stage .row:hover::before,.stage .row:focus-visible::before{opacity:1}
 .stage .row.lf{border-top-color:var(--ink);border-bottom:1px solid var(--line)}
 .stage .num{font-family:var(--serif);font-size:18px;width:34px;transition:color .3s}
 .stage .brand{display:none;transition:color .3s}
 .stage .bldg{position:absolute;right:0;top:1.85%;width:92%;height:auto;pointer-events:none}
 .bldg .h3,.bldg .h2,.bldg .h1,.bldg .hl{transition:fill .3s}
-.r3:hover,.r3:focus-visible{background:linear-gradient(90deg,var(--c3) 0,var(--c3) 30%,rgba(31,49,87,.05) 100%)}
-.r2:hover,.r2:focus-visible{background:linear-gradient(90deg,#DDCDBF 0,#DDCDBF 40%,rgba(221,205,191,.1) 100%)}
-.r1:hover,.r1:focus-visible{background:linear-gradient(90deg,var(--y) 0,var(--y) 30%,rgba(242,183,5,.08) 100%)}
-.rl:hover,.rl:focus-visible{background:linear-gradient(90deg,var(--cl) 0,var(--cl) 30%,rgba(91,64,52,.05) 100%)}
+.r3::before{background:linear-gradient(90deg,var(--c3) 0,var(--c3) 40%,rgba(31,49,87,.05) 100%)}
+.r2::before{background:linear-gradient(90deg,#DDCDBF 0,#DDCDBF 45%,rgba(221,205,191,.1) 100%)}
+.r1::before{background:linear-gradient(90deg,var(--y) 0,var(--y) 40%,rgba(242,183,5,.08) 100%)}
+.rl::before{background:linear-gradient(90deg,var(--cl) 0,var(--cl) 40%,rgba(91,64,52,.05) 100%)}
 .r3:hover .num,.r3:focus-visible .num,.r3:hover .brand,.r3:focus-visible .brand{color:#fff!important}
 .r1:hover .num,.r1:focus-visible .num{color:var(--ink)!important}
 .rl:hover .num,.rl:focus-visible .num{color:#D9B9A0!important}
@@ -141,8 +143,13 @@ nav a:last-child{border-bottom:0}
 .adl div{display:grid;grid-template-columns:84px 1fr;gap:12px;padding:14px 0;border-bottom:1px solid var(--line);font-size:14px;line-height:1.6}
 .adl dt{color:var(--mute)}
 .adl dd{font-weight:500;color:#3A342C}
-.adl dd a{display:block}
-.adl dd a span{display:inline-block;width:42px;font-family:var(--serif);color:var(--gold)}
+.adl .full{grid-template-columns:1fr;gap:6px}
+.call{display:flex;align-items:center;gap:8px;padding:4px 0}
+.call .fl{width:26px;font-family:var(--serif);color:var(--gold)}
+.call .nm{flex:1;min-width:0}
+.tel-pill{display:inline-flex;align-items:center;gap:6px;height:34px;padding:0 12px;border:1px solid var(--ink);border-radius:17px;font-size:13px;font-weight:700;white-space:nowrap;transition:background .2s,color .2s,transform .2s,box-shadow .2s}
+.tel-pill svg{width:14px;height:14px;flex:none}
+.tel-pill:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
 #map{position:relative;width:100%;height:280px;border-radius:4px;margin-top:24px;background:#E6E0D6 repeating-linear-gradient(45deg,transparent 0 22px,rgba(28,26,23,.035) 22px 23px);overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:var(--mute);font-size:14px;font-weight:600}
 #map svg{width:28px;height:28px;color:var(--gold)}
 .loc .btns{margin-top:16px}
@@ -175,6 +182,7 @@ footer .copy{color:#9A9184;margin-top:16px}
   #f1 .btn.sub:hover{background:var(--ink);border-color:var(--ink);color:var(--y)}
   .btn.naver:hover{background:#028A3E}
   .btn.kakao:hover{background:var(--ink);color:#FEE500}
+  .tel-pill:hover{background:var(--ink);color:var(--iv);transform:translateY(-1px);box-shadow:0 6px 14px rgba(28,26,23,.18)}
   .home:hover{background:var(--c);border-color:var(--c);color:#fff}
   .photos img:hover{filter:brightness(.82)}
   .lb button:hover{background:rgba(255,255,255,.28)}
@@ -409,9 +417,18 @@ footer .copy{color:#9A9184;margin-top:16px}
         </div>
       </div>
       <div class="photos">
-        <img src="img/3f_1.webp" width="700" height="366" alt="카시아타이 타이마사지" loading="lazy">
-        <img src="img/3f_2.webp" width="700" height="366" alt="카시아타이 스파 욕조" loading="lazy">
-        <img src="img/3f_3.webp" width="700" height="366" alt="카시아타이 마사지룸" loading="lazy">
+        <img src="img/3f_1.webp?v=1125" width="1600" height="1067" alt="카시아타이 커플 마사지룸과 원형 거울" loading="lazy">
+        <img src="img/3f_2.webp?v=1125" width="1100" height="800" alt="카시아타이 다락형 트리트먼트룸" loading="lazy">
+        <img src="img/3f_3.webp?v=1125" width="1600" height="1067" alt="카시아타이 프라이빗 욕조" loading="lazy">
+        <img src="img/3f_4.webp?v=1125" width="1600" height="1067" alt="카시아타이 마사지룸 전경" loading="lazy">
+        <img src="img/3f_5.webp?v=1125" width="1600" height="1067" alt="카시아타이 창가 마사지 베드" loading="lazy">
+        <img src="img/3f_6.webp?v=1125" width="1280" height="1600" alt="카시아타이 노을 전망 욕조" loading="lazy">
+        <img src="img/3f_7.webp?v=1125" width="1280" height="1600" alt="카시아타이 2인 마사지룸" loading="lazy">
+        <img src="img/3f_8.webp?v=1125" width="960" height="654" alt="카시아타이 복도와 식물 정원" loading="lazy">
+        <img src="img/3f_9.webp?v=1125" width="1600" height="1067" alt="카시아타이 욕조 옆 식물 장식" loading="lazy">
+        <img src="img/3f_10.webp?v=1125" width="1600" height="1066" alt="카시아타이 욕조 수전과 베드" loading="lazy">
+        <img src="img/3f_11.webp?v=1125" width="1600" height="1067" alt="카시아타이 타월" loading="lazy">
+        <img src="img/3f_12.webp?v=1125" width="1600" height="1067" alt="카시아타이 어메니티" loading="lazy">
       </div>
     </div>
   </section>
@@ -428,9 +445,13 @@ footer .copy{color:#9A9184;margin-top:16px}
         </div>
       </div>
       <div class="photos">
-        <img src="img/2f_1.webp" width="700" height="366" alt="데이메르 실내 수영장" loading="lazy">
-        <img src="img/2f_2.webp" width="700" height="366" alt="데이메르 해먹 라운지" loading="lazy">
-        <img src="img/2f_3.webp" width="700" height="366" alt="데이메르 다이닝 공간" loading="lazy">
+        <img src="img/2f_1.webp?v=1125" width="1701" height="718" alt="데이메르 네온 조명 수영장과 야자수" loading="lazy">
+        <img src="img/2f_2.webp?v=1125" width="1701" height="718" alt="데이메르 아치 창 자연광 수영장" loading="lazy">
+        <img src="img/2f_3.webp?v=1125" width="1701" height="718" alt="데이메르 곡선형 실내 수영장" loading="lazy">
+        <img src="img/2f_4.webp?v=1125" width="1701" height="718" alt="데이메르 수영장과 라운지 주방" loading="lazy">
+        <img src="img/2f_5.webp?v=1125" width="1701" height="718" alt="데이메르 열대 식물 수영장과 그네 소파" loading="lazy">
+        <img src="img/2f_6.webp?v=1125" width="1701" height="718" alt="데이메르 그네 소파 앞 수영장" loading="lazy">
+        <img src="img/2f_7.webp?v=1125" width="1701" height="718" alt="데이메르 웰컴 스크린과 수영장" loading="lazy">
       </div>
     </div>
   </section>
@@ -447,9 +468,15 @@ footer .copy{color:#9A9184;margin-top:16px}
         </div>
       </div>
       <div class="photos">
-        <img src="img/1f_1.webp" width="700" height="366" alt="ABC스팀세차 작업장" loading="lazy">
-        <img src="img/1f_2.webp" width="700" height="366" alt="ABC스팀세차 로고" loading="lazy">
-        <img src="img/1f_3.webp" width="700" height="366" alt="ABC스팀세차 휠 세척" loading="lazy">
+        <img src="img/1f_1.webp?v=1125" width="1600" height="1066" alt="ABC스팀세차 LED 조명 작업장" loading="lazy">
+        <img src="img/1f_2.webp?v=1125" width="1500" height="1000" alt="ABC스팀세차 로고 월과 작업 공간" loading="lazy">
+        <img src="img/1f_3.webp?v=1125" width="1600" height="1067" alt="ABC스팀세차 입구와 주차 공간" loading="lazy">
+        <img src="img/1f_4.webp?v=1125" width="1500" height="1001" alt="ABC스팀세차 작업장에서 본 출입구" loading="lazy">
+        <img src="img/1f_5.webp?v=1125" width="1600" height="1066" alt="ABC스팀세차 VIP 라운지" loading="lazy">
+        <img src="img/1f_6.webp?v=1125" width="1500" height="1000" alt="ABC스팀세차 코스 안내판과 세차 용품" loading="lazy">
+        <img src="img/1f_7.webp?v=1125" width="1600" height="1066" alt="ABC스팀세차 로고 사인" loading="lazy">
+        <img src="img/1f_8.webp?v=1125" width="1600" height="1066" alt="ABC스팀세차 코스 가격 안내판" loading="lazy">
+        <img src="img/1f_9.webp?v=1125" width="1600" height="1067" alt="ABC스팀세차와 데이메르가 있는 건물 외관" loading="lazy">
       </div>
     </div>
   </section>
@@ -466,9 +493,17 @@ footer .copy{color:#9A9184;margin-top:16px}
         </div>
       </div>
       <div class="photos">
-        <img src="img/lf_1.webp" width="700" height="366" alt="효소온 라운지" loading="lazy">
-        <img src="img/lf_2.webp" width="700" height="366" alt="효소찜질 체험" loading="lazy">
-        <img src="img/lf_3.webp" width="700" height="366" alt="효소온 찜질실" loading="lazy">
+        <img src="img/lf_1.webp?v=1125" width="1500" height="1125" alt="효소온 효소 베드가 놓인 찜질실 전경" loading="lazy">
+        <img src="img/lf_2.webp?v=1125" width="1200" height="900" alt="테라코타 커튼 아래 나란히 놓인 효소 베드" loading="lazy">
+        <img src="img/lf_3.webp?v=1125" width="669" height="892" alt="효소 매질에 누워 찜질하는 모습" loading="lazy">
+        <img src="img/lf_4.webp?v=1125" width="1000" height="750" alt="달빛 조명 아래 효소가 깔린 효소 베드" loading="lazy">
+        <img src="img/lf_5.webp?v=1125" width="900" height="1200" alt="원목 평상과 나무가 있는 쉼 공간" loading="lazy">
+        <img src="img/lf_6.webp?v=1125" width="940" height="940" alt="원목 벽에 양자 돌판이 설치된 양자테라피실" loading="lazy">
+        <img src="img/lf_7.webp?v=1125" width="900" height="1200" alt="효소ON 로고가 새겨진 매장 입구 벽" loading="lazy">
+        <img src="img/lf_8.webp?v=1125" width="940" height="940" alt="자동 교반기가 효소 매질을 섞는 모습" loading="lazy">
+        <img src="img/lf_9.webp?v=1125" width="1000" height="636" alt="손에 올린 고운 효소 매질" loading="lazy">
+        <img src="img/lf_10.webp?v=1125" width="712" height="950" alt="효소 매질에 꽂힌 온도계" loading="lazy">
+        <img src="img/lf_11.webp?v=1125" width="1000" height="667" alt="찜질 후 땀방울이 맺힌 어깨" loading="lazy">
       </div>
     </div>
   </section>
@@ -482,11 +517,11 @@ footer .copy{color:#9A9184;margin-top:16px}
           <div><dt>도로명</dt><dd>경기 김포시 금포로 1231</dd></div>
           <div><dt>지번</dt><dd>경기 김포시 운양동 1260-6</dd></div>
           <div><dt>내비게이션</dt><dd>‘김포시 금포로 1231’ 주소 검색</dd></div>
-          <div><dt>층별 문의</dt><dd>
-            <a href="tel:050713118590"><span>3F</span>카시아타이 0507-1311-8590</a>
-            <a href="tel:050714602214"><span>2F</span>데이메르 0507-1460-2214</a>
-            <a href="tel:050713674518"><span>1F</span>ABC스팀세차 0507-1367-4518</a>
-            <a href="tel:050713344516"><span>LF</span>효소온 0507-1334-4516</a>
+          <div class="full"><dt>층별 문의</dt><dd>
+            <p class="call"><span class="fl">3F</span><span class="nm">카시아타이</span><a class="tel-pill" href="tel:050713118590" aria-label="카시아타이 전화 걸기 0507-1311-8590"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>0507-1311-8590</a></p>
+            <p class="call"><span class="fl">2F</span><span class="nm">데이메르</span><a class="tel-pill" href="tel:050714602214" aria-label="데이메르 전화 걸기 0507-1460-2214"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>0507-1460-2214</a></p>
+            <p class="call"><span class="fl">1F</span><span class="nm">ABC스팀세차</span><a class="tel-pill" href="tel:050713674518" aria-label="ABC스팀세차 전화 걸기 0507-1367-4518"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>0507-1367-4518</a></p>
+            <p class="call"><span class="fl">LF</span><span class="nm">효소온</span><a class="tel-pill" href="tel:050713344516" aria-label="효소온 전화 걸기 0507-1334-4516"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>0507-1334-4516</a></p>
           </dd></div>
         </dl>
         <div class="btns">
